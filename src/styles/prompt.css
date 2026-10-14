@@ -97,6 +97,17 @@ html:has(.prompt-page) {
   height: 1.2em;
 }
 
+.pp-pasos {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.15rem 1.3rem;
+  background: var(--superficie);
+  border-left: 3px solid var(--acento);
+}
+.pp-pasos p {
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
 .pp-partes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));

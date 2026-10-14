@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { CuyoLogo, InstagramIcon, NeaLogo } from "../components/brand";
 import { EASE } from "../components/ease";
 import { Reveal } from "../components/Reveal";
-import { extraLinks, promptIntro, promptParts, promptText, socials } from "../data/prompt";
+import { extraLinks, promptIntro, promptSteps, promptText, socials } from "../data/prompt";
 import { meta } from "../data/slides";
 import "../styles/prompt.css";
 
@@ -113,15 +113,11 @@ export function PromptPage() {
             </h2>
             <CopyButton />
           </div>
-          <ol className="pp-partes">
-            {promptParts.map((p, i) => (
-              <li key={p.title} className="tarjeta pp-parte">
-                <span className="num-contorno pp-parte__num">{String(i + 1).padStart(2, "0")}</span>
-                <span className="pp-parte__titulo">{p.title}</span>
-                <span className="pp-parte__texto">{p.text}</span>
-              </li>
+          <div className="pp-pasos">
+            {promptSteps.map((step) => (
+              <p key={step}>{step}</p>
             ))}
-          </ol>
+          </div>
           <motion.pre
             className="pp-prompt bisel"
             initial={{ opacity: 0, y: 24 }}
