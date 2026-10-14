@@ -1,0 +1,83 @@
+/* NEA TECH 2026: paleta, tipografía y geometría tomadas de neatech.com.ar
+   (assets/css/tokens.css, tema "fusión" del 09/09/2026). */
+
+:root {
+  --nt-azul: #3448db;
+  --nt-azul-noche: #17246b;
+  --nt-azul-luminoso: #4b63ff;
+  --nt-azul-profundo: #0b1230;
+  --nt-fondo: #060a1c;
+  --nt-lima: #c8ff00;
+  --nt-cian: #00e0ff;
+  --nt-magenta: #ff20a1;
+  --nt-naranja: #ffba00;
+  --nt-verde-senal: #00f5a0;
+  --nt-violeta: #6a28ff;
+  --nt-blanco: #ffffff;
+
+  --fondo: var(--nt-azul);
+  --superficie: var(--nt-azul-noche);
+  --superficie-2: #1d2c80;
+  --superficie-profunda: var(--nt-azul-profundo);
+
+  --acento: var(--nt-lima);
+  --acento-2: var(--nt-cian);
+  --acento-contra: var(--nt-fondo);
+
+  --texto: #ffffff;
+  --texto-2: #dfe4fb;
+  --texto-3: #a9b4ec;
+  --linea: rgba(200, 255, 0, 0.28);
+  --linea-suave: rgba(255, 255, 255, 0.14);
+
+  --glow: 0 0 2.4rem rgba(200, 255, 0, 0.35);
+  --sombra: 0 2rem 4rem -1.5rem rgba(6, 10, 28, 0.65);
+
+  --patron: #c8ff00, #c8ff00, #00e0ff, #00e0ff, #ff20a1, #ffba00, #4b63ff, #060a1c;
+
+  --ff-display: "Chakra Petch", "Space Grotesk", system-ui, sans-serif;
+  --ff-text: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --ff-mono: "Chakra Petch", ui-monospace, "SFMono-Regular", monospace;
+
+  /* 1rem = 1% del ancho de un escenario 16:9 que entra en la ventana:
+     la tipografía crece con la pantalla y nunca se desborda en ultrawide. */
+  --fs-mega: 6.6rem;
+  --fs-h1: 5rem;
+  --fs-h2: 3.7rem;
+  --fs-h3: 2.25rem;
+  --fs-lead: 1.95rem;
+  --fs-body: 1.65rem;
+  --fs-sm: 1.25rem;
+  --fs-xs: 0.95rem;
+
+  --lh-tight: 0.92;
+  --lh-snug: 1.12;
+  --lh-body: 1.45;
+
+  --ls-mega: -0.03em;
+  --ls-label: 0.18em;
+
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.8rem;
+  --sp-4: 1.1rem;
+  --sp-5: 1.6rem;
+  --sp-6: 2.2rem;
+  --sp-7: 3.2rem;
+  --sp-8: 4.4rem;
+
+  --corte: 1.1rem;
+  --corte-lg: 2rem;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+html {
+  font-size: max(min(1vw, 1.7778vh), 8px);
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  html {
+    font-size: 2.5vw;
+  }
+}

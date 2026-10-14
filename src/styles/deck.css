@@ -1,0 +1,285 @@
+.deck {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--fondo);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.deck--idle {
+  cursor: none;
+}
+
+.pixel-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.marca-agua {
+  position: absolute;
+  right: -8%;
+  top: 50%;
+  translate: 0 -50%;
+  width: 62%;
+  color: var(--texto);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: -1;
+}
+.marca-agua--centro {
+  right: auto;
+  left: 50%;
+  translate: -50% -50%;
+  width: 78%;
+  opacity: 0.05;
+}
+
+/* ---------- Cabecera ---------- */
+.deck__header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6.2rem;
+  padding-inline: 4rem;
+  pointer-events: none;
+}
+.logo-cuyo--header {
+  margin-left: auto;
+  gap: 0.7rem;
+}
+.logo-cuyo--header .logo-cuyo__icono {
+  height: 3.2rem;
+}
+.logo-cuyo--header .logo-cuyo__texto {
+  font-size: 1.2rem;
+}
+
+.logo-nea {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--texto);
+}
+.logo-nea__isotipo {
+  width: 3.6rem;
+  height: auto;
+}
+.logo-nea__texto {
+  display: grid;
+  line-height: 1;
+}
+.logo-nea__marca {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.14em;
+}
+.logo-nea__sub {
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+  margin-top: 0.3rem;
+}
+.logo-nea__sub b {
+  color: var(--acento);
+  font-weight: 600;
+}
+.logo-nea--grande .logo-nea__isotipo {
+  width: 5.4rem;
+}
+.logo-nea--grande .logo-nea__marca {
+  font-size: 2rem;
+}
+.logo-nea--grande .logo-nea__sub {
+  font-size: 1.05rem;
+  margin-top: 0.45rem;
+}
+
+.logo-cuyo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.logo-cuyo__icono {
+  height: 4rem;
+  width: auto;
+}
+.logo-cuyo__texto {
+  display: grid;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Escenario ---------- */
+.deck__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 7rem 7rem 7.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  isolation: isolate;
+}
+
+/* ---------- Barrido entre slides ---------- */
+.pixel-wipe {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  pointer-events: none;
+}
+
+/* ---------- Pie: progreso y controles ---------- */
+.deck__footer {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 6rem;
+  padding-inline: 4rem;
+}
+
+.deck__progreso {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.deck__segmento {
+  width: 2.4rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  transition: width 400ms var(--ease);
+}
+.deck__segmento::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 0.32rem;
+  translate: 0 -50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition:
+    background 300ms var(--ease),
+    box-shadow 300ms var(--ease);
+}
+.deck__segmento:hover::before {
+  background: rgba(255, 255, 255, 0.7);
+}
+.deck__segmento.is-visto::before {
+  background: rgba(255, 255, 255, 0.75);
+}
+.deck__segmento.is-actual {
+  width: 5.2rem;
+}
+.deck__segmento.is-actual::before {
+  background: var(--acento);
+  box-shadow: var(--glow);
+}
+
+.deck__controles {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: opacity 500ms var(--ease);
+}
+.deck--idle .deck__controles {
+  opacity: 0;
+}
+.deck__contador {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.12em;
+  color: var(--texto-2);
+  margin-right: 0.8rem;
+}
+.deck__contador b {
+  color: var(--acento);
+  font-weight: 700;
+}
+.deck__btn {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 0;
+  cursor: pointer;
+  background: color-mix(in srgb, var(--nt-fondo) 45%, transparent);
+  color: var(--texto);
+  box-shadow: inset 0 0 0 1px var(--linea-suave);
+  clip-path: polygon(0 0, calc(100% - 0.7rem) 0, 100% 0.7rem, 100% 100%, 0.7rem 100%, 0 calc(100% - 0.7rem));
+  transition:
+    background 200ms var(--ease),
+    color 200ms var(--ease);
+}
+.deck__btn:hover:not(:disabled) {
+  background: var(--acento);
+  color: var(--acento-contra);
+}
+.deck__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.deck__btn svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .deck__header,
+  .deck__footer {
+    padding-inline: 1.6rem;
+  }
+  .logo-cuyo--header .logo-cuyo__texto {
+    display: none;
+  }
+  .logo-cuyo--header .logo-cuyo__icono {
+    height: 3.6rem;
+  }
+  .slide {
+    padding: 7rem 2rem 7.5rem;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  .deck__segmento {
+    width: 1.4rem;
+  }
+  .deck__segmento.is-actual {
+    width: 3rem;
+  }
+  .deck__btn {
+    width: 4rem;
+    height: 4rem;
+  }
+  .deck__btn svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}

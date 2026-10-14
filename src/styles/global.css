@@ -1,0 +1,291 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--ff-text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--acento);
+  color: var(--acento-contra);
+}
+
+:focus-visible {
+  outline: 0.18rem solid var(--acento);
+  outline-offset: 0.25rem;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Tipografía ---------- */
+h1,
+h2,
+h3,
+.display {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.mega {
+  font-family: var(--ff-display);
+  font-size: var(--fs-mega);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-mega);
+  text-transform: uppercase;
+}
+.h1 {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  line-height: 0.98;
+}
+.h2 {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  line-height: 1.02;
+}
+.h3 {
+  font-size: var(--fs-h3);
+}
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--texto-2);
+}
+.acento {
+  color: var(--acento);
+}
+.acento-2 {
+  color: var(--acento-2);
+}
+
+/* Etiqueta: barrita lima + texto tracked, como en el manual */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--acento);
+}
+.etiqueta::before {
+  content: "";
+  width: 2.2rem;
+  height: 0.22rem;
+  background: var(--acento);
+  box-shadow: var(--glow);
+}
+
+/* Palabra resaltada con el bloque lima del wordmark */
+.resaltado {
+  position: relative;
+  display: inline-block;
+  color: var(--acento-contra);
+  padding-inline: 0.12em;
+  z-index: 0;
+}
+.resaltado__fondo {
+  position: absolute;
+  inset: 0.04em 0 0.02em;
+  background: var(--acento);
+  z-index: -1;
+  transform-origin: left center;
+}
+
+/* ---------- Geometría de marca ---------- */
+.bisel {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--corte)) 0,
+    100% var(--corte),
+    100% 100%,
+    var(--corte) 100%,
+    0 calc(100% - var(--corte))
+  );
+}
+.bisel--lg {
+  --corte: var(--corte-lg);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.35em 0.8em;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--chip-color, var(--acento)) 16%, transparent);
+  color: var(--chip-color, var(--acento));
+  box-shadow: inset 0 0 0 0.08rem color-mix(in srgb, var(--chip-color, var(--acento)) 55%, transparent);
+}
+.chip--cian {
+  --chip-color: var(--nt-cian);
+}
+.chip--blanco {
+  --chip-color: var(--nt-blanco);
+}
+.chip--magenta {
+  --chip-color: var(--nt-magenta);
+}
+.chip--naranja {
+  --chip-color: var(--nt-naranja);
+}
+
+.btn {
+  --btn-bg: var(--acento);
+  --btn-fg: var(--acento-contra);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  padding: 0.95em 1.6em;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 0.75em) 0, 100% 0.75em, 100% 100%, 0.75em 100%, 0 calc(100% - 0.75em));
+  transition:
+    transform 220ms var(--ease),
+    filter 220ms var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.btn--fantasma {
+  --btn-bg: transparent;
+  --btn-fg: var(--texto);
+  box-shadow: inset 0 0 0 1px var(--linea-suave);
+}
+.btn--fantasma:hover {
+  --btn-fg: var(--acento);
+  box-shadow: inset 0 0 0 1px var(--acento);
+}
+
+.tarjeta {
+  position: relative;
+  background: var(--superficie);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--corte)) 0,
+    100% var(--corte),
+    100% 100%,
+    var(--corte) 100%,
+    0 calc(100% - var(--corte))
+  );
+}
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0.2rem;
+  background: var(--tarjeta-color, var(--acento));
+}
+
+/* Número de sección con contorno, tipo manual de marca */
+.num-contorno {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 0.09rem rgba(255, 255, 255, 0.45);
+}
+
+.icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.6rem;
+  height: 3.6rem;
+  background: var(--acento);
+  color: var(--acento-contra);
+  clip-path: polygon(0 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% 100%, 0.8rem 100%, 0 calc(100% - 0.8rem));
+}
+.icono svg {
+  width: 56%;
+  height: 56%;
+}
+.icono--contorno {
+  background: color-mix(in srgb, var(--acento) 14%, transparent);
+  color: var(--acento);
+  box-shadow: inset 0 0 0 0.1rem var(--acento);
+}
+
+/* Grilla técnica de fondo, muy sutil */
+.trama {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--linea-suave) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--linea-suave) 1px, transparent 1px);
+  background-size: 4.5rem 4.5rem;
+  mask-image: radial-gradient(85% 70% at 50% 45%, #000 20%, transparent 80%);
+  opacity: 0.6;
+}
+
+/* Franja de píxeles: solo en bordes, nunca detrás de texto (regla del manual) */
+.franja-pixeles {
+  height: 3.2rem;
+  width: 100%;
+  background-image: url("/img/brand/patron-pixeles.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  pointer-events: none;
+}
+.franja-pixeles--invertida {
+  transform: scaleY(-1);
+}

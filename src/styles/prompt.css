@@ -1,0 +1,239 @@
+/* La página del QR se lee en el celular: tipografía en rem fijos, no en
+   unidades de escenario. */
+html:has(.prompt-page) {
+  font-size: 16px;
+}
+
+.prompt-page {
+  --fs-h1: clamp(2.4rem, 9vw, 4.4rem);
+  --fs-h2: clamp(1.8rem, 6vw, 2.8rem);
+  --fs-h3: clamp(1.3rem, 4vw, 1.7rem);
+  --fs-lead: clamp(1.05rem, 3.6vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+  --corte: 14px;
+  --corte-lg: 24px;
+  min-height: 100vh;
+  background: var(--fondo);
+  overflow-x: hidden;
+}
+
+.pp-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: 1.25rem clamp(1.25rem, 5vw, 2.5rem);
+}
+.prompt-page .logo-nea__isotipo {
+  width: 46px;
+}
+.prompt-page .logo-nea__marca {
+  font-size: 1.05rem;
+}
+.prompt-page .logo-nea__sub {
+  font-size: 0.62rem;
+  margin-top: 3px;
+}
+.logo-cuyo--chico .logo-cuyo__icono {
+  height: 40px;
+}
+.logo-cuyo--chico .logo-cuyo__texto {
+  font-size: 0.9rem;
+}
+
+.pp-main {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: 0 clamp(1.25rem, 5vw, 2.5rem) 4rem;
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.pp-hero {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  padding-top: clamp(1.5rem, 6vw, 4rem);
+}
+.pp-hero > *:not(.trama) {
+  position: relative;
+}
+.pp-titulo {
+  line-height: 0.95;
+}
+.pp-lead {
+  max-width: 46ch;
+}
+.pp-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+.pp-seguir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--acento);
+  transition: color 200ms var(--ease);
+}
+.pp-seguir:hover {
+  color: var(--texto);
+}
+.pp-seguir svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+.prompt-page .btn svg {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.pp-partes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+}
+.pp-partes > div {
+  height: 100%;
+}
+.pp-parte {
+  height: 100%;
+  gap: 0.5rem;
+  padding: 1.4rem;
+}
+.pp-parte__num {
+  font-size: 2.4rem;
+}
+.pp-parte__titulo {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+.pp-parte__texto {
+  color: var(--texto-2);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.pp-seccion {
+  display: grid;
+  gap: 1.25rem;
+}
+.pp-seccion__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.pp-prompt {
+  margin: 0;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: var(--nt-azul-profundo);
+  color: var(--texto-2);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: clamp(0.82rem, 2.6vw, 0.95rem);
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  user-select: all;
+  box-shadow: inset 3px 0 0 var(--acento);
+}
+
+.pp-redes-titulo {
+  line-height: 1;
+}
+.pp-redes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1rem;
+}
+.pp-red {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.4rem;
+  background: var(--superficie);
+  transition:
+    background 220ms var(--ease),
+    transform 220ms var(--ease);
+}
+.pp-red:hover {
+  background: var(--superficie-2);
+  transform: translateY(-3px);
+}
+.pp-red__icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  background: var(--acento);
+  color: var(--acento-contra);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.pp-red__icono svg {
+  width: 26px;
+  height: 26px;
+}
+.pp-red__datos {
+  display: grid;
+  gap: 0.2rem;
+  flex: 1;
+}
+.pp-red__handle {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--acento);
+  line-height: 1.1;
+}
+.pp-red__nombre {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+.pp-red__texto {
+  color: var(--texto-2);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+.pp-red__flecha {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: var(--texto-2);
+}
+.pp-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pp-pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.25rem clamp(1.25rem, 5vw, 2.5rem) 2rem;
+  background: var(--nt-azul-profundo);
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
